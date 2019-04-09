@@ -30,7 +30,9 @@ public class Crawler {
 		
 		//crawl the URL when initializing the crawler object and keep it in the memory (cached)  
 		//so it can serve the request fast 
+		System.out.println("-----------------Crawling for URL " + URL + " started-----------------" );
 		getPageLinks(URL);
+		System.out.println("-----------------Crawling for URL " + URL + " completed-----------------" );
 	}
 	
 	// This method basically applies BFS to crawl the URL
@@ -51,6 +53,8 @@ public class Crawler {
 			
 			//fetch the URL out of the queue and search for it. 
 			String link = links.poll();
+			
+			System.out.println("Crawling URL: " + link);
 			
 			// keeps list of all the URLs visited till now
 			set.add(link);
@@ -92,7 +96,7 @@ public class Crawler {
 					}
 				}
 			} catch (IOException e) {
-				System.err.println("Exception: " + e.getMessage() + " occurred while fetching URL: " + link );
+				System.out.println("Exception: " + e.getMessage() + " occurred while fetching URL: " + link );
 //				e.printStackTrace();
 			}
 		}
